@@ -1,0 +1,1374 @@
+/* ==========================================================================
+   Google Startpage - Design System & Modern Stylesheet
+   Inspired by Google Material You & Google Search Clean Aesthetics
+   ========================================================================== */
+
+:root {
+  /* Google Brand Colors */
+  --g-blue: #4285F4;
+  --g-red: #EA4335;
+  --g-yellow: #FBBC05;
+  --g-green: #34A853;
+  --g-blue-hover: #1a73e8;
+  --g-blue-light: #e8f0fe;
+  --g-blue-light-border: #d2e3fc;
+
+  /* Light Theme (Default Google Theme) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f4;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-tertiary: #70757a;
+  --border-color: #dadce0;
+  --border-light: #ebebeb;
+  --card-bg: #ffffff;
+  --card-hover-bg: #f8f9fa;
+  --card-shadow: 0 1px 3px rgba(60, 64, 67, 0.12), 0 1px 2px rgba(60, 64, 67, 0.08);
+  --card-shadow-hover: 0 4px 12px rgba(60, 64, 67, 0.15);
+  
+  --search-bg: #ffffff;
+  --search-border: #dfe1e5;
+  --search-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.08);
+  --search-shadow-hover: 0 4px 12px rgba(32, 33, 36, 0.16);
+  --search-shadow-focus: 0 4px 16px rgba(32, 33, 36, 0.22);
+  
+  --btn-bg: #f8f9fa;
+  --btn-border: #f8f9fa;
+  --btn-text: #3c4043;
+  --btn-hover-bg: #f1f3f4;
+  --btn-hover-border: #dadce0;
+  --btn-hover-text: #202124;
+
+  --shortcut-tile-bg: #f1f3f4;
+  --shortcut-tile-hover: #e8eaed;
+  
+  --footer-bg: #f2f2f2;
+  --footer-text: #70757a;
+  --footer-border: #dadce0;
+
+  --badge-bg: #e8f0fe;
+  --badge-text: #1967d2;
+  --modal-overlay: rgba(32, 33, 36, 0.6);
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 28px;
+  --radius-full: 9999px;
+  
+  --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-google: 'Product Sans', 'Outfit', 'Google Sans', var(--font-main);
+}
+
+/* Dark Theme (Google Dark Mode) */
+[data-theme="dark"] {
+  --bg-primary: #202124;
+  --bg-secondary: #303134;
+  --bg-tertiary: #3c4043;
+  --text-primary: #e8eaed;
+  --text-secondary: #bdc1c6;
+  --text-tertiary: #9aa0a6;
+  --border-color: #3c4043;
+  --border-light: #303134;
+  --card-bg: #303134;
+  --card-hover-bg: #3c4043;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.55);
+  
+  --search-bg: #202124;
+  --search-border: #5f6368;
+  --search-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  --search-shadow-hover: 0 4px 14px rgba(0, 0, 0, 0.7);
+  --search-shadow-focus: 0 4px 18px rgba(0, 0, 0, 0.85);
+  
+  --btn-bg: #303134;
+  --btn-border: #303134;
+  --btn-text: #e8eaed;
+  --btn-hover-bg: #3c4043;
+  --btn-hover-border: #5f6368;
+  --btn-hover-text: #ffffff;
+
+  --shortcut-tile-bg: #303134;
+  --shortcut-tile-hover: #3c4043;
+  
+  --footer-bg: #171717;
+  --footer-text: #9aa0a6;
+  --footer-border: #303134;
+
+  --badge-bg: #1a3962;
+  --badge-text: #8ab4f8;
+  --modal-overlay: rgba(0, 0, 0, 0.75);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Top Header Bar
+   ========================================================================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  position: relative;
+  z-index: 50;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Seoul Digital University (SDU) Logo Button */
+.sdu-logo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.sdu-logo-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: #004b97;
+  box-shadow: 0 4px 12px rgba(0, 75, 151, 0.25);
+  background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .sdu-logo-btn:hover {
+  border-color: #8ab4f8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.sdu-logo-btn .sdu-emblem-svg {
+  width: 32px;
+  height: 32px;
+  transition: transform var(--transition-fast);
+}
+
+.sdu-logo-btn:hover .sdu-emblem-svg {
+  transform: rotate(-4deg);
+}
+
+.header-v-divider {
+  width: 1px;
+  height: 22px;
+  background-color: var(--border-color);
+  opacity: 0.6;
+}
+
+.live-clock-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  color: var(--text-secondary);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-fast);
+}
+
+.live-clock-badge:hover {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.clock-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--g-green);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(52, 168, 83, 0.6);
+  animation: pulseGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.clock-time {
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.clock-date {
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  position: relative;
+}
+
+.header-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.header-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-link {
+  font-size: 13px;
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}
+
+.user-avatar-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--g-blue), #1967d2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.user-avatar-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(66, 133, 244, 0.35);
+}
+
+/* Google Apps 9-Dot Dropdown */
+.apps-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 24px;
+  width: 320px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: all var(--transition-normal);
+}
+
+.apps-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  gap: 6px;
+  transition: background-color var(--transition-fast);
+}
+
+.app-item:hover {
+  background-color: var(--bg-secondary);
+}
+
+.app-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.app-name {
+  font-size: 11px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Main Page Wrapper
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 24px 30px;
+}
+
+/* ==========================================================================
+   Weather Cards Section (서울, 제주)
+   ========================================================================== */
+.weather-section {
+  width: 100%;
+  max-width: 740px;
+  margin-bottom: 24px;
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+
+.weather-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.2px;
+}
+
+.weather-section-title svg {
+  width: 16px;
+  height: 16px;
+  color: var(--g-blue);
+}
+
+.weather-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.weather-refresh-btn:hover {
+  color: var(--g-blue);
+  background-color: var(--bg-secondary);
+}
+
+.weather-refresh-btn.spinning svg {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.weather-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.weather-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-color);
+}
+
+/* Subtle accent line on top */
+.weather-card.seoul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--g-blue), #8ab4f8);
+}
+
+.weather-card.jeju::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--g-green), #81c995);
+}
+
+.weather-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.city-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.city-badge .flag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.weather-card.seoul .city-badge .flag-dot {
+  background-color: var(--g-blue);
+}
+
+.weather-card.jeju .city-badge .flag-dot {
+  background-color: var(--g-green);
+}
+
+.city-sub {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 1px;
+}
+
+.weather-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.weather-icon-wrapper svg {
+  width: 40px;
+  height: 40px;
+}
+
+.weather-main-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.temp-large {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-google);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.temp-unit {
+  font-size: 18px;
+  font-weight: 400;
+  vertical-align: top;
+  margin-left: 2px;
+  color: var(--text-secondary);
+}
+
+.condition-badge {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.temp-range {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+  text-align: right;
+}
+
+.weather-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-item svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+}
+
+/* Skeleton Loading State for Weather */
+.weather-card.loading .temp-large,
+.weather-card.loading .condition-badge,
+.weather-card.loading .temp-range {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-light) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  color: transparent !important;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==========================================================================
+   Google Logo Section
+   ========================================================================== */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.google-logo-svg {
+  width: 272px;
+  height: 92px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.google-logo-svg:hover {
+  transform: scale(1.03);
+}
+
+.logo-subtext {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Google Search Box Section
+   ========================================================================== */
+.search-section {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-box-form {
+  width: 100%;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  background-color: var(--search-bg);
+  border: 1px solid var(--search-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--search-shadow);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+  position: relative;
+  z-index: 30;
+}
+
+.search-input-wrapper:hover {
+  box-shadow: var(--search-shadow-hover);
+  border-color: transparent;
+}
+
+.search-input-wrapper.focused {
+  border-color: transparent;
+  box-shadow: var(--search-shadow-focus);
+}
+
+.search-icon-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.search-icon-left svg {
+  width: 20px;
+  height: 20px;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+.search-tools-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.search-tool-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  position: relative;
+}
+
+.search-tool-btn:hover {
+  background-color: var(--bg-secondary);
+}
+
+.search-tool-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.clear-search-btn {
+  display: none;
+  color: var(--text-tertiary);
+}
+
+.clear-search-btn.visible {
+  display: flex;
+}
+
+.search-tool-btn.voice-active {
+  animation: pulseVoice 1.2s infinite;
+  background-color: rgba(234, 67, 53, 0.15);
+}
+
+@keyframes pulseVoice {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.shortcut-indicator {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  pointer-events: none;
+}
+
+/* Search Suggestions & Recent Searches Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  right: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 8px 0;
+  z-index: 25;
+  display: none;
+  overflow: hidden;
+}
+
+.search-dropdown.active {
+  display: block;
+}
+
+.dropdown-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 18px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-clear-all {
+  font-size: 11px;
+  color: var(--g-blue);
+  cursor: pointer;
+}
+
+.dropdown-clear-all:hover {
+  text-decoration: underline;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 18px;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.suggestion-item:hover, .suggestion-item.highlighted {
+  background-color: var(--bg-secondary);
+}
+
+.suggestion-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestion-icon {
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.suggestion-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.suggestion-delete-btn {
+  color: var(--text-tertiary);
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: none;
+}
+
+.suggestion-item:hover .suggestion-delete-btn {
+  display: block;
+}
+
+.suggestion-delete-btn:hover {
+  color: var(--g-red);
+}
+
+/* ==========================================================================
+   Google Search Action Buttons
+   ========================================================================== */
+.search-buttons-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.g-btn {
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--btn-text);
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.g-btn:hover {
+  background-color: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
+  color: var(--btn-hover-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   Quick Shortcuts Grid (Chrome New Tab Style)
+   ========================================================================== */
+.shortcuts-section {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  justify-content: center;
+}
+
+.shortcut-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  position: relative;
+  text-align: center;
+}
+
+.shortcut-tile:hover {
+  background-color: var(--shortcut-tile-hover);
+  transform: translateY(-2px);
+}
+
+.shortcut-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--shortcut-tile-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.shortcut-tile:hover .shortcut-icon-circle {
+  background-color: var(--card-bg);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
+.shortcut-icon-circle svg,
+.shortcut-icon-circle img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.shortcut-title {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shortcut-delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--text-tertiary);
+  color: #fff;
+  font-size: 11px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.shortcut-tile:hover .shortcut-delete-btn {
+  display: flex;
+}
+
+.shortcut-delete-btn:hover {
+  background-color: var(--g-red);
+}
+
+/* ==========================================================================
+   Quote of the Day Card (오늘의 명언)
+   ========================================================================== */
+.quote-section {
+  width: 100%;
+  max-width: 680px;
+  margin-top: 4px;
+}
+
+.quote-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.quote-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-color);
+}
+
+.quote-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.quote-label-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.quote-label-pill svg {
+  width: 13px;
+  height: 13px;
+}
+
+.quote-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quote-tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  background-color: var(--bg-secondary);
+  transition: all var(--transition-fast);
+}
+
+.quote-tool-btn:hover {
+  color: var(--g-blue);
+  background-color: var(--bg-tertiary);
+}
+
+.quote-tool-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.quote-tool-btn.liked {
+  color: var(--g-red);
+}
+
+.quote-tool-btn.liked svg {
+  fill: var(--g-red);
+}
+
+.quote-content-wrapper {
+  margin: 12px 0 14px;
+  position: relative;
+}
+
+.quote-text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  word-break: keep-all;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.quote-text.fade {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.quote-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-light);
+}
+
+.quote-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.quote-author-orig {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+.quote-category-tag {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  background-color: var(--bg-secondary);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Google-style Footer
+   ========================================================================== */
+.site-footer {
+  width: 100%;
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  color: var(--footer-text);
+  font-size: 13px;
+  margin-top: auto;
+}
+
+.footer-location-row {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--footer-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.location-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--g-green);
+}
+
+.footer-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 16px;
+}
+
+.footer-left-links,
+.footer-right-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Interactive Modals & Toasts
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--modal-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(4px);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  width: 90%;
+  max-width: 440px;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  transform: translateY(12px) scale(0.96);
+  transition: all var(--transition-normal);
+}
+
+.modal-backdrop.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.modal-form-group {
+  margin-bottom: 16px;
+}
+
+.modal-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color var(--transition-fast);
+}
+
+.modal-input:focus {
+  border-color: var(--g-blue);
+  box-shadow: 0 0 0 2px var(--g-blue-light-border);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.modal-btn.primary {
+  background-color: var(--g-blue);
+  color: #fff;
+}
+
+.modal-btn.primary:hover {
+  background-color: var(--g-blue-hover);
+}
+
+.modal-btn.secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.modal-btn.secondary:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Toast Notification */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  background-color: #323232;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 300;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+  pointer-events: none;
+}
+
+.toast-container.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 680px) {
+  .site-header {
+    padding: 12px 16px;
+  }
+  
+  .sdu-logo-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .sdu-logo-btn .sdu-emblem-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .live-clock-badge {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .clock-date {
+    display: none;
+  }
+
+  .weather-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .google-logo-svg {
+    width: 210px;
+    height: 72px;
+  }
+
+  .shortcuts-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-links-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-v-divider {
+    display: none;
+  }
+  .live-clock-badge {
+    display: none;
+  }
+}
